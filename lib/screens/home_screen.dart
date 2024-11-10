@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'form_membre_screen.dart';
 import 'calendrier_screen.dart';
 import 'liste_membre_screen.dart';
+import 'add_activite_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
