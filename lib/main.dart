@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,14 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Groupe Scout',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Bienvenue au Groupe Scout'),
-        ),
-        body: Center(
-          child: Text('Activités à venir'),
-        ),
-      ),
+      home: HomeScreen(),
     );
   }
 }
