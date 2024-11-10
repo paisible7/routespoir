@@ -41,6 +41,15 @@ class HomeScreen extends StatelessWidget {
               },
               child: Text('Liste des Membres'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddActivityScreen()),
+                );
+              },
+              child: Text('Ajouter une Activité'),
+            ),
           ],
         ),
       ),
