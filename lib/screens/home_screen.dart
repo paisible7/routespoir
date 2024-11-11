@@ -3,6 +3,7 @@ import 'form_membre_screen.dart';
 import 'calendrier_screen.dart';
 import 'liste_membre_screen.dart';
 import 'add_activite_screen.dart';
+import 'activite_list_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -50,6 +51,15 @@ class HomeScreen extends StatelessWidget {
                 );
               },
               child: Text('Ajouter une Activité'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ActivityListScreen()),
+                );
+              },
+              child: Text('Liste des Activités'),
             ),
           ],
         ),
