@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/activite_service.dart';
+import 'activite_detail_screen.dart';
 
 class ActivityListScreen extends StatelessWidget {
   final ActivityService activityService = ActivityService();
@@ -17,8 +18,18 @@ class ActivityListScreen extends StatelessWidget {
           return ListTile(
             title: Text(activity.title),
             subtitle: Text(activity.description),
-            trailing: Text(activity.date.toLocal().toString().split(' ')[0]), // Affiche la date
+            trailing: Text(activity.date
+                .toLocal()
+                .toString()
+                .split(' ')[0]), // Affiche la date
             onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      ActivityDetailScreen(activity: activity),
+                ),
+              );
               // Logique pour afficher les détails de l'activité ou pour modifier
             },
           );
