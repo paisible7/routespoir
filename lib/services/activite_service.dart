@@ -1,6 +1,12 @@
 import '../models/activite.dart';
 
 class ActivityService {
+  static final ActivityService _instance = ActivityService._internal();
+
+  factory ActivityService() => _instance;
+
+  ActivityService._internal();
+
   List<Activity> _activities = [];
 
   List<Activity> get activities => _activities;
