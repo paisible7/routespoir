@@ -3,7 +3,12 @@ import '../services/activite_service.dart';
 import 'activite_detail_screen.dart';
 import 'mod_activite_screen.dart'; // Importation l'écran d'édition
 
-class ActivityListScreen extends StatelessWidget {
+class ActivityListScreen extends StatefulWidget {
+  @override
+  _ActivityListScreenState createState() => _ActivityListScreenState();
+}
+
+class _ActivityListScreenState extends State<ActivityListScreen> {
   final ActivityService activityService = ActivityService();
 
   @override
@@ -47,8 +52,13 @@ class ActivityListScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => EditActivityScreen(
-                              activity: activity,
-                              activityService: activityService),
+                            activity: activity,
+                            activityService: activityService,
+                            onActivityUpdated: () {
+                              setState(
+                                  () {}); // Mettre à jour l'interface utilisateur
+                            },
+                          ),
                         ),
                       );
                     } else if (value == 'delete') {
@@ -64,6 +74,8 @@ class ActivityListScreen extends StatelessWidget {
                               onPressed: () {
                                 // Supprimer l'activité
                                 activityService.removeActivity(activity.id);
+                                setState(
+                                    () {}); // Mettre à jour l'interface utilisateur
                                 Navigator.of(context)
                                     .pop(); // Fermer la boîte de dialogue
                               },
