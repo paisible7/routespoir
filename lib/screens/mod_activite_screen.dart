@@ -4,12 +4,13 @@ import '../services/activite_service.dart';
 
 class EditActivityScreen extends StatelessWidget {
   final Activity activity;
-  final ActivityService activityService = ActivityService();
+  final ActivityService activityService; // Passer l'instance via le constructeur
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   DateTime selectedDate;
 
-  EditActivityScreen({required this.activity}) : selectedDate = activity.date;
+  EditActivityScreen({required this.activity, required this.activityService}) 
+      : selectedDate = activity.date;
 
   @override
   Widget build(BuildContext context) {
@@ -60,9 +61,8 @@ class EditActivityScreen extends StatelessWidget {
                   date: selectedDate,
                 );
 
-                // Remplacer l'ancienne activité par la nouvelle
-                activityService.removeActivity(activity.id);
-                activityService.addActivity(updatedActivity);
+                // Utiliser une méthode de mise à jour
+                activityService.updateActivity(updatedActivity);
 
                 // Retourner à la liste des activités
                 Navigator.pop(context);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../services/activite_service.dart';
 import 'activite_detail_screen.dart';
-import 'mod_activite_screen.dart'; // Importez l'écran d'édition
+import 'mod_activite_screen.dart'; // Importation l'écran d'édition
 
 class ActivityListScreen extends StatelessWidget {
   final ActivityService activityService = ActivityService();
@@ -20,7 +20,8 @@ class ActivityListScreen extends StatelessWidget {
             title: Text(activity.title),
             subtitle: Text(activity.description),
             trailing: Row(
-              mainAxisSize: MainAxisSize.min, // Pour que le Row prenne la taille minimale
+              mainAxisSize:
+                  MainAxisSize.min, // Pour que le Row prenne la taille minimale
               children: [
                 Text(activity.date
                     .toLocal()
@@ -45,7 +46,9 @@ class ActivityListScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => EditActivityScreen(activity: activity),
+                          builder: (context) => EditActivityScreen(
+                              activity: activity,
+                              activityService: activityService),
                         ),
                       );
                     } else if (value == 'delete') {
@@ -54,19 +57,22 @@ class ActivityListScreen extends StatelessWidget {
                         context: context,
                         builder: (context) => AlertDialog(
                           title: Text('Confirmer la suppression'),
-                          content: Text('Êtes-vous sûr de vouloir supprimer cette activité ?'),
+                          content: Text(
+                              'Êtes-vous sûr de vouloir supprimer cette activité ?'),
                           actions: [
                             TextButton(
                               onPressed: () {
                                 // Supprimer l'activité
                                 activityService.removeActivity(activity.id);
-                                Navigator.of(context).pop(); // Fermer la boîte de dialogue
+                                Navigator.of(context)
+                                    .pop(); // Fermer la boîte de dialogue
                               },
                               child: Text('Oui'),
                             ),
                             TextButton(
                               onPressed: () {
-                                Navigator.of(context).pop(); // Fermer la boîte de dialogue
+                                Navigator.of(context)
+                                    .pop(); // Fermer la boîte de dialogue
                               },
                               child: Text('Non'),
                             ),
@@ -83,7 +89,8 @@ class ActivityListScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ActivityDetailScreen(activity: activity),
+                  builder: (context) =>
+                      ActivityDetailScreen(activity: activity),
                 ),
               );
             },
